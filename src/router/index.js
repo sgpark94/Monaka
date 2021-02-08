@@ -8,13 +8,21 @@ const routes = [
 		path: "/collection",
 		name: "Collection",
 		component: () =>
-			import(/* webpackChunkName: "collection" */ "../views/Collection.vue"),
+			import(/* webpackChunkName: "Collection" */ "../views/Collection.vue"),
 	},
 	{
 		path: "/gallery",
 		name: "Gallery",
 		component: () =>
-			import(/* webpackChunkName: "gallery" */ "../views/Gallery.vue"),
+			import(/* webpackChunkName: "Gallery" */ "../views/Gallery.vue"),
+	},
+	{
+		path: "/stickerAdd",
+		name: "StickerAdd",
+		component: () =>
+			import(
+				/* webpackChunkName: "StickerAdd" */ "../components/StickerAdd.vue"
+			),
 	},
 ];
 

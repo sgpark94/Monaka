@@ -1,11 +1,11 @@
 <template>
 	<div>
-		Sticker Info
+		Collection Setting
 	</div>
 </template>
 <script>
 export default {
-	name: "StickerInfo",
+	name: "CollectionSetting",
 };
 </script>
 
