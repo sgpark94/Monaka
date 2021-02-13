@@ -1,12 +1,15 @@
 <template>
 	<div>
+		<collection-component />
 		<Wish />
 	</div>
 </template>
 <script>
 import Wish from "@/components/Wish";
+import CollectionComponent from "../components/CollectionComponent.vue";
 export default {
 	components: {
+		CollectionComponent,
 		Wish,
 	},
 	name: "Collection",

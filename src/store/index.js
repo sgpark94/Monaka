@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		is_sticker_exist: false,
+		is_sticker_exist: true,
 	},
 	getters: {},
 	mutations: {},
