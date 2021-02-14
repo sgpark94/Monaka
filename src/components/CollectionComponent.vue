@@ -1,200 +1,18 @@
 <template>
 	<div id="collectionComponent">
 		<!-- 스티커 갯수 -->
-		<div class="stickerStatus">2 / 20</div>
-
-		<!-- 스티커 영역 -->
-		<div class="stickerList">
-			<!-- 채워진 스티커 -->
-			<!-- 신규 스티커 -->
-			<div class="aquired new">
-				<span>New</span>
-				<img
-					src="../assets/images/iconRedStar.png"
-					alt="강조아이콘"
-					class="star"
-				/>
-				<img
-					src="https://item.kakaocdn.net/do/4ab318951f14b03c2e545776b00a7b8a66d8fd08427c1f00d04db607cc4cdc8e"
-					alt="칭찬스티커받은후"
-				/>
+		<div v-for="collection in collectionList">
+			<div class="stickerStatus">
+				{{ collection.stickerList.length }} / {{ collection.total }}
 			</div>
-
-			<div class="aquired">
-				<img
-					src="https://item.kakaocdn.net/do/4ab318951f14b03c2e545776b00a7b8a66d8fd08427c1f00d04db607cc4cdc8e"
-					alt="칭찬스티커받은후"
-				/>
+			<!-- Sticker -->
+			<div class="sticker" v-for="sticker in collection.stickerList">
+				<v-btn>{{ sticker.type }} !</v-btn>
 			</div>
-
-			<!-- 빈 스티커 -->
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
+			<div class="sticker" v-for="i in noStickerCount(collection)">
+				<v-btn dark color="gray" @click="attached(collection.stickerList)"
+					>안붙음!</v-btn
+				>
 			</div>
 		</div>
 	</div>
@@ -202,6 +20,26 @@
 <script>
 export default {
 	name: "CollectionComponent",
+	data() {
+		return {};
+	},
+	computed: {
+		collectionList() {
+			return this.$store.state.collectionList;
+		},
+	},
+	methods: {
+		attached(list) {
+			let form = {
+				type: "good",
+			};
+			list.push(form);
+		},
+		noStickerCount(data) {
+			// computed처럼 값을 변화시켜주니까 이해하자!!
+			return data.total - data.stickerList.length;
+		},
+	},
 };
 </script>
 

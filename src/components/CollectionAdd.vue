@@ -1,11 +1,14 @@
 <template>
 	<div>
 		<v-card height="100%" class="pa-5 ma-5">
+			<v-fade-transition>
+				<v-alert type="error" v-show="waringText">{{ waringText }}</v-alert>
+			</v-fade-transition>
 			<v-card-text>
 				<p class="titleInfo caption">연인을 위한 컬렉션을 추가하세요 :)</p>
 				<h2>컬렉션 이름</h2>
 				<v-text-field
-					v-model="form.title"
+					v-model="collectionAddForm.title"
 					solo
 					flat
 					class="content pt-0"
@@ -13,7 +16,7 @@
 				></v-text-field>
 				<h2>소원</h2>
 				<v-text-field
-					v-model="form.wish"
+					v-model="collectionAddForm.wish"
 					solo
 					flat
 					class="content pt-0"
@@ -21,7 +24,7 @@
 				></v-text-field>
 				<h2>스티커 개수</h2>
 				<v-btn-toggle
-					v-model="form.count"
+					v-model="collectionAddForm.total"
 					tile
 					color="deep-purple accent-3"
 					group
@@ -36,7 +39,7 @@
 				<v-divider></v-divider>
 			</v-card-text>
 			<v-card-actions>
-				<v-btn dark large block color="#8977ad" class="mt-3" @click="reserve">
+				<v-btn dark large block color="#8977ad" class="mt-3" @click="create">
 					생성하기
 				</v-btn>
 			</v-card-actions>
@@ -48,12 +51,30 @@ export default {
 	name: "CollectionAdd",
 	data() {
 		return {
-			form: {
+			collectionAddForm: {
 				title: "",
 				wish: "",
-				count: 30,
+				total: 30,
+				stickerList: [],
 			},
+			waringText: "",
 		};
+	},
+	methods: {
+		create() {
+			// 실패시
+			if (!this.collectionAddForm.title) {
+				this.waringText = "컬렉션 이름을 입력해주세요.";
+				return;
+			} else if (!this.collectionAddForm.wish) {
+				this.waringText = "소원을 입력해주세요.";
+				return;
+			}
+			// 성공시
+			this.waringText = "";
+			this.$router.push({ name: "Gallery" });
+			this.$store.commit("collectionListAdd", this.collectionAddForm);
+		},
 	},
 };
 </script>

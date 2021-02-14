@@ -6,9 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 	state: {
 		is_sticker_exist: true,
+		collectionList: [],
 	},
 	getters: {},
-	mutations: {},
+	mutations: {
+		collectionListAdd(state, form) {
+			// 위쪽에 컬렉션리스트 추가.
+			state.collectionList.unshift(form);
+		},
+	},
 	actions: {},
 	modules: {},
 });
