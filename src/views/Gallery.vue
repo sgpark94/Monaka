@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-btn block to="stickerAdd">
+		<v-btn block to="collectionAdd">
 			<v-icon>mdi-plus</v-icon>
 		</v-btn>
 		Gallery

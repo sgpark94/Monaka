@@ -17,11 +17,11 @@ const routes = [
 			import(/* webpackChunkName: "Gallery" */ "../views/Gallery.vue"),
 	},
 	{
-		path: "/stickerAdd",
-		name: "StickerAdd",
+		path: "/collectionAdd",
+		name: "CollectionAdd",
 		component: () =>
 			import(
-				/* webpackChunkName: "StickerAdd" */ "../components/StickerAdd.vue"
+				/* webpackChunkName: "CollectionAdd" */ "../components/CollectionAdd.vue"
 			),
 	},
 ];
