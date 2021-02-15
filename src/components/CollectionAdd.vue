@@ -2,7 +2,7 @@
 	<div>
 		<v-card height="100%" class="pa-5 ma-5">
 			<v-fade-transition>
-				<v-alert type="error" v-show="waringText">{{ waringText }}</v-alert>
+				<v-alert type="error" v-show="warningText" dense class="caption ma-0">{{ warningText }}</v-alert>
 			</v-fade-transition>
 			<v-card-text>
 				<p class="titleInfo caption">연인을 위한 컬렉션을 추가하세요 :)</p>
@@ -25,6 +25,7 @@
 				<h2>스티커 개수</h2>
 				<v-btn-toggle
 					v-model="collectionAddForm.total"
+					mandatory
 					tile
 					color="deep-purple accent-3"
 					group
@@ -36,8 +37,10 @@
 						50
 					</v-btn>
 				</v-btn-toggle>
-				<v-divider></v-divider>
 			</v-card-text>
+
+			<v-divider></v-divider>
+
 			<v-card-actions>
 				<v-btn dark large block color="#8977ad" class="mt-3" @click="create">
 					생성하기
@@ -57,21 +60,21 @@ export default {
 				total: 30,
 				stickerList: [],
 			},
-			waringText: "",
+			warningText: "",
 		};
 	},
 	methods: {
 		create() {
 			// 실패시
 			if (!this.collectionAddForm.title) {
-				this.waringText = "컬렉션 이름을 입력해주세요.";
+				this.warningText = "컬렉션 이름을 입력해주세요.";
 				return;
 			} else if (!this.collectionAddForm.wish) {
-				this.waringText = "소원을 입력해주세요.";
+				this.warningText = "소원을 입력해주세요.";
 				return;
 			}
 			// 성공시
-			this.waringText = "";
+			this.warningText = "";
 			this.$router.push({ name: "Gallery" });
 			this.$store.commit("collectionListAdd", this.collectionAddForm);
 		},
@@ -79,17 +82,23 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+<style scope>
+/* @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap"); */
+@font-face {
+    font-family: 'SeoulNamsanM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+};
 
 h2 {
-	font-family: "Jua", sans-serif;
+	font-family: "SeoulNamsanM", sans-serif;
 	color: #8977ad;
 }
-.v-text-field input {
-	font-family: "Jua", sans-serif;
-}
 .titleInfo {
-	color: #999;
+	color: #bdbdbd;
+}
+.v-input input {
+	font-size: 0.875rem;
 }
 </style>
