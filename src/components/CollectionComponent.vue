@@ -2,17 +2,33 @@
 	<div id="collectionComponent">
 		<!-- 스티커 갯수 -->
 		<div v-for="collection in collectionList">
-			<div class="stickerStatus">
+			<div class="stickerStatus mb-3">
 				{{ collection.stickerList.length }} / {{ collection.total }}
 			</div>
 			<!-- Sticker -->
-			<div class="sticker" v-for="sticker in collection.stickerList">
-				<v-btn>{{ sticker.type }} !</v-btn>
-			</div>
-			<div class="sticker" v-for="i in noStickerCount(collection)">
-				<v-btn dark color="gray" @click="attached(collection.stickerList)"
-					>안붙음!</v-btn
-				>
+			<div class="stickerArea mb-6">
+				<div class="sticker ma-2" v-for="sticker in collection.stickerList">
+					<v-btn icon x-large class="stick">
+						<v-avatar color="#8977ad" size="54" class="caption">{{
+							sticker.type
+						}}</v-avatar></v-btn
+					>
+				</div>
+				<div class="sticker ma-2" v-for="i in noStickerCount(collection)">
+					<v-btn
+						icon
+						x-large
+						class="noStick"
+						@click="attached(collection.stickerList)"
+					>
+						<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
+							<img
+								src="../assets/images/iconHeartSticker.svg"
+								alt="칭찬스티커받기전아이콘"
+							/>
+						</v-avatar>
+					</v-btn>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -52,7 +68,7 @@ export default {
 	color: #8977ad;
 	font-family: "Poppins", sans-serif;
 }
-.stickerList {
+/* .stickerList {
 	margin-bottom: 100px;
 	text-align: center;
 }
@@ -83,12 +99,31 @@ export default {
 .stickerList img {
 	max-width: 100%;
 	max-height: 100%;
+} */
+.stickerArea {
+	text-align: center;
 }
-.aquired {
+.sticker {
+	position: relative;
+	display: inline-block;
+}
+.sticker::before {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	right: 0;
+	bottom: 0;
+	width: 58px;
+	height: 58px;
+	border: 1px dashed #8977ad;
+	border-radius: 50%;
+}
+.stick {
 	border-style: solid;
 	background-color: #8977ad;
 }
-.aquired.new span {
+/* .stick.new span {
 	position: absolute;
 	top: 16px;
 	left: -5px;
@@ -99,21 +134,14 @@ export default {
 	font-size: 0.625rem;
 	color: #fff;
 }
-.aquired.new .star {
+.stick.new .star {
 	position: absolute;
 	top: 13px;
 	left: 0;
 	width: 16px;
-}
-.empty {
-	border-style: dashed;
-	opacity: 0.2;
-}
-.empty img {
+} */
+.noStick img {
 	width: 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	opacity: 0.2;
 }
 </style>

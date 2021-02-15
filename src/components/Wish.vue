@@ -1,12 +1,17 @@
 <template>
-	<div>
-		<p class="wishTitle">소원</p>
-		<p class="wishName">커플운동화 신고 놀이공원 놀러가기.</p>
+	<div class="mt-16">
+		<!-- <p class="wishTitle">소원</p>
+		<p class="wishName" v-for="list in wishList">{{ list }}</p> -->
 	</div>
 </template>
 <script>
 export default {
 	name: "Wish",
+	computed: {
+		wishList() {
+			return this.$store.state.collectionList[0].wish;
+		},
+	},
 };
 </script>
 
