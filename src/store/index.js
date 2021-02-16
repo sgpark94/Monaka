@@ -7,7 +7,11 @@ export default new Vuex.Store({
 	state: {
 		collectionList: [],
 	},
-	getters: {},
+	getters: {
+		list(state){
+			return state.collectionList;
+		}
+	},
 	mutations: {
 		collectionListAdd(state, form) {
 			// 위쪽에 컬렉션리스트 추가.
