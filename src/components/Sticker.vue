@@ -1,207 +1,54 @@
 <template>
 	<div>
-		<!-- 스티커 갯수 -->
-		<div class="stickerStatus">2 / 20</div>
-
-		<!-- 스티커 영역 -->
-		<div class="stickerList">
-			<!-- 채워진 스티커 -->
-			<!-- 신규 스티커 -->
-			<div class="aquired new">
-				<span>New</span>
-				<img
-					src="../assets/images/iconRedStar.png"
-					alt="강조아이콘"
-					class="star"
-				/>
-				<img
-					src="https://item.kakaocdn.net/do/4ab318951f14b03c2e545776b00a7b8a66d8fd08427c1f00d04db607cc4cdc8e"
-					alt="칭찬스티커받은후"
-				/>
+		<div class="stickerArea mb-6">
+			<div class="sticker ma-2" v-for="sticker in latestCollection.stickerList">
+				<v-btn icon x-large class="stick">
+					<v-avatar color="#8977ad" size="54" class="caption">{{
+						sticker.type
+					}}</v-avatar></v-btn
+				>
 			</div>
-
-			<div class="aquired">
-				<img
-					src="https://item.kakaocdn.net/do/4ab318951f14b03c2e545776b00a7b8a66d8fd08427c1f00d04db607cc4cdc8e"
-					alt="칭찬스티커받은후"
-				/>
-			</div>
-
-			<!-- 빈 스티커 -->
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
-			</div>
-			<div class="empty">
-				<img
-					src="../assets/images/iconHeartSticker.svg"
-					alt="칭찬스티커받기전"
-				/>
+			<div class="sticker ma-2" v-for="i in noStickerCount(latestCollection)">
+				<v-btn
+					icon
+					x-large
+					class="noStick"
+					:disabled="i !== 1"
+					@click="attached(latestCollection.stickerList)"
+				>
+					<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
+						<img
+							src="../assets/images/iconHeartSticker.svg"
+							alt="칭찬스티커받기전아이콘"
+						/>
+					</v-avatar>
+				</v-btn>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
+import getters from "../store/index";
+
 export default {
-	name: "CollectionComponent",
+	name: "Sticker",
+	computed: {
+		latestCollection() {
+			return this.$store.getters.latest;
+		},
+	},
+	methods: {
+		attached(list) {
+			let form = {
+				type: "good",
+			};
+			list.push(form);
+		},
+		noStickerCount(data) {
+			// computed처럼 값을 변화시켜주니까 이해하자!!
+			return data.total - data.stickerList.length;
+		},
+	},
 };
 </script>
 
@@ -214,7 +61,7 @@ export default {
 	color: #8977ad;
 	font-family: "Poppins", sans-serif;
 }
-.stickerList {
+/* .stickerList {
 	margin-bottom: 100px;
 	text-align: center;
 }
@@ -245,12 +92,31 @@ export default {
 .stickerList img {
 	max-width: 100%;
 	max-height: 100%;
+} */
+.stickerArea {
+	text-align: center;
 }
-.aquired {
+.sticker {
+	position: relative;
+	display: inline-block;
+}
+.sticker::before {
+	content: "";
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	right: 0;
+	bottom: 0;
+	width: 58px;
+	height: 58px;
+	border: 1px dashed #8977ad;
+	border-radius: 50%;
+}
+.stick {
 	border-style: solid;
 	background-color: #8977ad;
 }
-.aquired.new span {
+/* .stick.new span {
 	position: absolute;
 	top: 16px;
 	left: -5px;
@@ -261,21 +127,14 @@ export default {
 	font-size: 0.625rem;
 	color: #fff;
 }
-.aquired.new .star {
+.stick.new .star {
 	position: absolute;
 	top: 13px;
 	left: 0;
 	width: 16px;
-}
-.empty {
-	border-style: dashed;
-	opacity: 0.2;
-}
-.empty img {
+} */
+.noStick img {
 	width: 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	opacity: 0.2;
 }
 </style>

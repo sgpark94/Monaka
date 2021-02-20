@@ -8,9 +8,18 @@ export default new Vuex.Store({
 		collectionList: [],
 	},
 	getters: {
-		list(state){
+		list(state) {
+			if (state.collectionList.length === 0) {
+				return [];
+			}
 			return state.collectionList;
-		}
+		},
+		latest(state) {
+			if (state.collectionList.length === 0) {
+				return {};
+			}
+			return state.collectionList[0];
+		},
 	},
 	mutations: {
 		collectionListAdd(state, form) {
