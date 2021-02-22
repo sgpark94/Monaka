@@ -7,7 +7,7 @@
 				}}</v-alert>
 			</v-fade-transition>
 			<v-card-text>
-				<p class="titleInfo caption mb-7">연인을 위한 컬렉션을 추가하세요 :)</p>
+				<p class="titleInfo caption mb-7">본인과 연인을 위한 컬렉션을 추가하세요 :)</p>
 				<h3 class="mb-2">컬렉션 이름</h3>
 				<v-text-field
 					v-model="collectionAddForm.title"
@@ -17,12 +17,21 @@
 					ref="collectionName"
 					placeholder="ex) 1일 1칭찬 한달도전기!"
 				></v-text-field>
-				<h3 class="mb-2">소원</h3>
+				<h3 class="mb-2">내가 들어줄 소원</h3>
 				<v-text-field
-					v-model="collectionAddForm.wish"
+					v-model="collectionAddForm.myWish"
 					solo
 					flat
-					ref="wish"
+					ref="myWish"
+					class="content pt-0"
+					placeholder="ex) 철수랑 3박4일 제주도 여행가기."
+				></v-text-field>
+				<h3 class="mb-2">상대가 들어줄 소원</h3>
+				<v-text-field
+					v-model="collectionAddForm.yourWish"
+					solo
+					flat
+					ref="yourWish"
 					class="content pt-0"
 					placeholder="ex) 영희가 준비한 도시락 가지고 놀이공원 놀러가기."
 				></v-text-field>
@@ -60,7 +69,8 @@ export default {
 		return {
 			collectionAddForm: {
 				title: "",
-				wish: "",
+				myWish: "",
+				yourWish: "",
 				total: 30,
 				stickerList: [],
 			},
@@ -74,9 +84,13 @@ export default {
 				this.warningText = "컬렉션 이름을 입력해주세요.";
 				this.$refs.collectionName.focus();
 				return;
-			} else if (!this.collectionAddForm.wish) {
-				this.warningText = "소원을 입력해주세요.";
-				this.$refs.wish.focus();
+			} else if (!this.collectionAddForm.myWish) {
+				this.warningText = "본인의 소원을 입력해주세요.";
+				this.$refs.myWish.focus();
+				return;
+			} else if (!this.collectionAddForm.yourWish) {
+				this.warningText = "상대방의 소원을 입력해주세요.";
+				this.$refs.yourWish.focus();
 				return;
 			}
 			// 성공시
@@ -89,17 +103,7 @@ export default {
 </script>
 
 <style scope>
-/* @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap"); */
-@font-face {
-	font-family: "SeoulNamsanM";
-	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
-		format("woff");
-	font-weight: normal;
-	font-style: normal;
-}
-
 h3 {
-	font-family: "SeoulNamsanM", sans-serif;
 	color: #8977ad;
 }
 .titleInfo {

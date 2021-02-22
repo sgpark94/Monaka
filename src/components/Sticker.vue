@@ -59,40 +59,7 @@ export default {
 	padding: 15px 15px 0;
 	font-size: 0.875rem;
 	color: #8977ad;
-	font-family: "Poppins", sans-serif;
 }
-/* .stickerList {
-	margin-bottom: 100px;
-	text-align: center;
-}
-.stickerList > div {
-	position: relative;
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-	margin: 10px;
-	padding: 5px;
-	vertical-align: top;
-	border-width: 1px;
-	border-color: #8977ad;
-	border-radius: 50%;
-}
-.stickerList > div::before {
-	content: "";
-	position: absolute;
-	top: -4px;
-	left: -4px;
-	right: 0;
-	bottom: 0;
-	width: 56px;
-	height: 56px;
-	border: 1px solid #8977ad;
-	border-radius: 50%;
-}
-.stickerList img {
-	max-width: 100%;
-	max-height: 100%;
-} */
 .stickerArea {
 	text-align: center;
 }
@@ -116,23 +83,6 @@ export default {
 	border-style: solid;
 	background-color: #8977ad;
 }
-/* .stick.new span {
-	position: absolute;
-	top: 16px;
-	left: -5px;
-	right: -5px;
-	padding: 2px 0;
-	text-align: center;
-	background-color: #8977ad;
-	font-size: 0.625rem;
-	color: #fff;
-}
-.stick.new .star {
-	position: absolute;
-	top: 13px;
-	left: 0;
-	width: 16px;
-} */
 .noStick img {
 	width: 20px;
 	opacity: 0.2;

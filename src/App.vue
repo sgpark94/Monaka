@@ -23,9 +23,17 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"); */
+
+@font-face {
+font-family: 'JSDongkang-Regular';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
 
 * {
-	font-family: "Noto Sans KR", sans-serif;
+	font-family: "JSDongkang-Regular", sans-serif;
+	letter-spacing: -.5px;
 }
 </style>

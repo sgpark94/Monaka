@@ -12,7 +12,7 @@
 			color="rgba(137, 119, 173, 0.3)"
 		>
 			<v-card-subtitle class="pt-3 pb-1">{{ data.title }}</v-card-subtitle>
-			<v-card-title class="pt-0">{{ data.wish }}</v-card-title>
+			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
 			<v-card-text>
 				<v-row class="stickerCount mx-0 pb-2">
 					{{ data.stickerList.length }} / {{ data.total }}
@@ -24,6 +24,10 @@
 <script>
 export default {
 	name: "Gallery",
+    data () {
+      return {
+      }
+    },
 	computed: {
 		collectionList() {
 			return this.$store.state.collectionList;
@@ -33,18 +37,10 @@ export default {
 </script>
 
 <style scoped>
-@font-face {
-	font-family: "SeoulNamsanM";
-	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
-		format("woff");
-	font-weight: normal;
-	font-style: normal;
-}
 
 .v-card__title,
 .v-card__subtitle {
 	line-height: 1.3;
-	font-family: "SeoulNamsanM", sans-serif;
 }
 .stickerCount {
 	position: absolute;
