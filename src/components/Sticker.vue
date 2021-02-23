@@ -25,6 +25,32 @@
 				</v-btn>
 			</div>
 		</div>
+
+		<!-- <div class="stickerArea mb-6">
+			<div class="sticker ma-2" v-for="sticker in latestCollection.stickerList">
+				<v-btn icon x-large class="stick">
+					<v-avatar color="#8977ad" size="54" class="caption">{{
+						sticker.type
+					}}</v-avatar></v-btn
+				>
+			</div>
+			<div class="sticker ma-2" v-for="i in noStickerCount(latestCollection)">
+				<v-btn
+					icon
+					x-large
+					class="noStick"
+					:disabled="i !== 1"
+					@click="attached(latestCollection.stickerList)"
+				>
+					<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
+						<img
+							src="../assets/images/iconHeartSticker.svg"
+							alt="칭찬스티커받기전아이콘"
+						/>
+					</v-avatar>
+				</v-btn>
+			</div>
+		</div> -->
 	</div>
 </template>
 <script>

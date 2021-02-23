@@ -36,6 +36,9 @@ export default new Vuex.Store({
 			// 위쪽에 컬렉션리스트 추가.
 			state.collectionList.unshift(form);
 		},
+		switchName(state, isYou){
+			state.isYou;
+		}
 	},
 	actions: {},
 	modules: {},

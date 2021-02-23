@@ -1,6 +1,5 @@
 <template>
 	<div id="collectionComponent">
-		<!-- 스티커 갯수 -->
 		<div>
 			<v-container class="pb-0">
 				<v-row justify="center" class="mt-1">
@@ -19,13 +18,13 @@
 								v-model="isYou"
 								color="#8977ad"
 								inset
+								@click="switchName(isYou)"
 								:label="isYou ? 'You' : 'Me'"
 							></v-switch>
 						</v-sheet>
 					</v-col>
 				</v-row>
 			</v-container>
-			<!-- Sticker -->
 			<Sticker />
 		</div>
 	</div>
@@ -49,6 +48,12 @@ export default {
 			return this.$store.getters.latest;
 		},
 	},
+	methods: {
+		switchName(isYou){
+			// this.$store.state.isYou = isYou;
+			this.$store.commit('switchName', isYou);
+		}
+	}
 };
 </script>
 

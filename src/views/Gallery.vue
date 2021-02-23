@@ -29,6 +29,9 @@ export default {
       }
     },
 	computed: {
+		isYou() {
+			return this.$store.state.isYou;
+		},
 		collectionList() {
 			return this.$store.state.collectionList;
 		},
