@@ -1,20 +1,20 @@
 <template>
 	<div>
 		<div class="stickerArea mb-6">
-			<div class="sticker ma-2" v-for="sticker in latestCollection.stickerList">
+			<div class="sticker ma-2" v-for="sticker in stickerList">
 				<v-btn icon x-large class="stick">
-					<v-avatar color="#8977ad" size="54" class="caption">{{
-						sticker.type
-					}}</v-avatar></v-btn
-				>
+					<v-avatar color="#8977ad" size="54" class="caption">
+						{{ sticker.type }}
+					</v-avatar>
+				</v-btn>
 			</div>
-			<div class="sticker ma-2" v-for="i in noStickerCount(latestCollection)">
+			<div class="sticker ma-2" v-for="i in noStickerCount">
 				<v-btn
 					icon
 					x-large
 					class="noStick"
 					:disabled="i !== 1"
-					@click="attached(latestCollection.stickerList)"
+					@click="attached(stickerList)"
 				>
 					<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
 						<img
@@ -25,32 +25,6 @@
 				</v-btn>
 			</div>
 		</div>
-
-		<!-- <div class="stickerArea mb-6">
-			<div class="sticker ma-2" v-for="sticker in latestCollection.stickerList">
-				<v-btn icon x-large class="stick">
-					<v-avatar color="#8977ad" size="54" class="caption">{{
-						sticker.type
-					}}</v-avatar></v-btn
-				>
-			</div>
-			<div class="sticker ma-2" v-for="i in noStickerCount(latestCollection)">
-				<v-btn
-					icon
-					x-large
-					class="noStick"
-					:disabled="i !== 1"
-					@click="attached(latestCollection.stickerList)"
-				>
-					<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
-						<img
-							src="../assets/images/iconHeartSticker.svg"
-							alt="칭찬스티커받기전아이콘"
-						/>
-					</v-avatar>
-				</v-btn>
-			</div>
-		</div> -->
 	</div>
 </template>
 <script>
@@ -62,6 +36,17 @@ export default {
 		latestCollection() {
 			return this.$store.getters.latest;
 		},
+		stickerList() {
+			if (this.$store.state.isYou) {
+				return this.$store.getters.latest.yourStickerList;
+			} else {
+				return this.$store.getters.latest.myStickerList;
+			}
+		},
+		noStickerCount() {
+			// computed처럼 값을 변화시켜주니까 이해하자!!
+			return this.latestCollection.total - this.stickerList.length;
+		},
 	},
 	methods: {
 		attached(list) {
@@ -69,10 +54,6 @@ export default {
 				type: "good",
 			};
 			list.push(form);
-		},
-		noStickerCount(data) {
-			// computed처럼 값을 변화시켜주니까 이해하자!!
-			return data.total - data.stickerList.length;
 		},
 	},
 };

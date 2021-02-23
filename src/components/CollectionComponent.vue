@@ -5,10 +5,10 @@
 				<v-row justify="center" class="mt-1">
 					<v-col cols="auto">
 						<div class="stickerStatus">
-							{{ latestCollection.stickerList.length }} / {{ latestCollection.total }}
+							{{ stickerList.length }} / {{ latestCollection.total }}
 						</div>
 					</v-col>
-					
+
 					<v-spacer></v-spacer>
 
 					<v-col cols="auto">
@@ -37,7 +37,7 @@ export default {
 	name: "CollectionComponent",
 	data() {
 		return {
-	        isYou: true,
+			isYou: true,
 		};
 	},
 	components: {
@@ -47,13 +47,20 @@ export default {
 		latestCollection() {
 			return this.$store.getters.latest;
 		},
+		stickerList() {
+			if (this.$store.state.isYou) {
+				return this.$store.getters.latest.yourStickerList;
+			} else {
+				return this.$store.getters.latest.myStickerList;
+			}
+		},
 	},
 	methods: {
-		switchName(isYou){
+		switchName(isYou) {
 			// this.$store.state.isYou = isYou;
-			this.$store.commit('switchName', isYou);
-		}
-	}
+			this.$store.commit("switchName", this.isYou);
+		},
+	},
 };
 </script>
 

@@ -12,10 +12,11 @@ export default new Vuex.Store({
 				myWish: "철수랑 손잡고 놀이공원 놀러가기.",
 				yourWish: "영희랑 커플 프로필 사진찍기.",
 				total: 30,
-				stickerList: []
-			}
+				myStickerList: [],
+				yourStickerList: [],
+			},
 		],
-		isYou: true
+		isYou: true,
 	},
 	getters: {
 		list(state) {
@@ -26,7 +27,14 @@ export default new Vuex.Store({
 		},
 		latest(state) {
 			if (state.collectionList.length === 0) {
-				return {};
+				return {
+					title: "",
+					myWish: "",
+					yourWish: "",
+					total: 30,
+					myStickerList: [],
+					yourtickerList: [],
+				};
 			}
 			return state.collectionList[0];
 		},
@@ -36,9 +44,9 @@ export default new Vuex.Store({
 			// 위쪽에 컬렉션리스트 추가.
 			state.collectionList.unshift(form);
 		},
-		switchName(state, isYou){
-			state.isYou;
-		}
+		switchName(state, isYou) {
+			state.isYou = isYou;
+		},
 	},
 	actions: {},
 	modules: {},

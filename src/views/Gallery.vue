@@ -15,19 +15,21 @@
 			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
 			<v-card-text>
 				<v-row class="stickerCount mx-0 pb-2">
-					{{ data.stickerList.length }} / {{ data.total }}
+					{{ stickerList.length }} / {{ data.total }}
 				</v-row>
 			</v-card-text>
 		</v-card>
 	</div>
 </template>
 <script>
+import getters from "../store/index";
+
 export default {
 	name: "Gallery",
-    data () {
-      return {
-      }
-    },
+	data() {
+		return {};
+	},
+
 	computed: {
 		isYou() {
 			return this.$store.state.isYou;
@@ -35,12 +37,15 @@ export default {
 		collectionList() {
 			return this.$store.state.collectionList;
 		},
+		stickerList() {
+			// console.log(this.$store.getters.latest);
+			return this.$store.getters.latest.yourStickerList;
+		},
 	},
 };
 </script>
 
 <style scoped>
-
 .v-card__title,
 .v-card__subtitle {
 	line-height: 1.3;

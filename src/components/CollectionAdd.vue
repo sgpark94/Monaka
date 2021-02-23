@@ -7,7 +7,9 @@
 				}}</v-alert>
 			</v-fade-transition>
 			<v-card-text>
-				<p class="titleInfo caption mb-7">본인과 연인을 위한 컬렉션을 추가하세요 :)</p>
+				<p class="titleInfo caption mb-7">
+					본인과 연인을 위한 컬렉션을 추가하세요 :)
+				</p>
 				<h3 class="mb-2">컬렉션 이름</h3>
 				<v-text-field
 					v-model="collectionAddForm.title"
@@ -72,7 +74,8 @@ export default {
 				myWish: "",
 				yourWish: "",
 				total: 30,
-				stickerList: [],
+				myStickerList: [],
+				yourStickerList: [],
 			},
 			warningText: "",
 		};

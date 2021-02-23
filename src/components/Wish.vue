@@ -5,26 +5,25 @@
 	</div>
 </template>
 <script>
-import { getters } from 'vuex';
+import { getters } from "vuex";
 export default {
 	name: "Wish",
 	data() {
-		return {
-		};
+		return {};
 	},
 	computed: {
 		wish() {
 			// 리스트가 없을경우 처리.
-			if(!this.$store.state.collectionList.length){
+			if (!this.$store.state.collectionList.length) {
 				return;
-			} 
+			}
 			// return this.$store.state.collectionList[0].wish;
 			// return this.$store.getters.latest.yourWish;
 
-			if(this.$store.state.isYou){
+			if (this.$store.state.isYou) {
 				return this.$store.getters.latest.yourWish;
-			} else{
-				return this.$store.getters.latest.myWish
+			} else {
+				return this.$store.getters.latest.myWish;
 			}
 		},
 	},
