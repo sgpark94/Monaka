@@ -15,7 +15,7 @@
 			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
 			<v-card-text>
 				<v-row class="stickerCount mx-0 pb-2">
-					{{ stickerList.length }} / {{ data.total }}
+					{{ data.yourStickerList.length }} / {{ data.total }}
 				</v-row>
 			</v-card-text>
 		</v-card>
@@ -36,10 +36,6 @@ export default {
 		},
 		collectionList() {
 			return this.$store.state.collectionList;
-		},
-		stickerList() {
-			// console.log(this.$store.getters.latest);
-			return this.$store.getters.latest.yourStickerList;
 		},
 	},
 };
