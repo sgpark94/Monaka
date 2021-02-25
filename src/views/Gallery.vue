@@ -12,7 +12,6 @@
 			class="collectionBox ma-5 pa-2"
 			color="rgba(137, 119, 173, 0.3)"
 		>
-		{{ i }}
 			<v-card-subtitle class="pt-3 pb-1">{{ data.title }}</v-card-subtitle>
 			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
 			<v-card-text>
@@ -40,11 +39,13 @@ export default {
 		},
 	},
 	methods: {
-		moveToCollection(i){
-			console.log(this.$store.state.viewIndex);
-			this.$store.commit('updateIndex', i);
-		}
-	}
+		moveToCollection(i) {
+			// this.$store.state.viewIndex = i;
+			// console.log(i, this.$store.state.viewIndex);
+			this.$router.push({ name: "Collection" });
+			this.$store.commit("updateIndex", i);
+		},
+	},
 };
 </script>
 

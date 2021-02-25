@@ -47,9 +47,13 @@ export default {
 			// computed처럼 값을 변화시켜주니까 이해하자!!
 			return this.latestCollection.total - this.stickerList.length;
 		},
+		disabled() {
+			return this.$store.state.viewIndex > 0; // true, false를 반환한다.
+		},
 	},
 	methods: {
 		attached(list) {
+			if (this.disabled) return;
 			let form = {
 				type: "good",
 			};
