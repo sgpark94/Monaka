@@ -1,7 +1,7 @@
 <template>
 	<div class="mb-10">
-		<div class="ma-5">
-			<v-btn block outlined to="collectionAdd" color="#8977ad">
+		<div @click="addAbled()" class="ma-5">
+			<v-btn block outlined color="#8977ad">
 				<v-icon>mdi-plus</v-icon>
 			</v-btn>
 		</div>
@@ -23,6 +23,7 @@
 	</div>
 </template>
 <script>
+import CollectionAddVue from "../components/CollectionAdd.vue";
 import getters from "../store/index";
 
 export default {
@@ -44,6 +45,23 @@ export default {
 			// console.log(i, this.$store.state.viewIndex);
 			this.$router.push({ name: "Collection" });
 			this.$store.commit("updateIndex", i);
+		},
+		addAbled() {
+			if (!this.$store.getters.list.length) {
+				// 초기값 : 개수 없는 경우.
+				this.$router.push({ name: "CollectionAdd" });
+			} else if (
+				this.$store.getters.latest.yourStickerList.length ===
+				this.$store.getters.latest.total
+			) {
+				// 최신 스티커 완성한 경우.
+				console.log(this.$store.getters.latest.yourStickerList.length);
+				console.log(this.$store.getters.latest.total);
+				this.$router.push({ name: "CollectionAdd" });
+			} else {
+				alert("진행중인 스티커를 완성하신 후 새롭게 만들수 있습니다 :)");
+				return;
+			}
 		},
 	},
 };

@@ -17,16 +17,17 @@ export default new Vuex.Store({
 			},
 		],
 		isYou: true,
-		viewIndex: 0
+		viewIndex: 0,
 	},
 	getters: {
-		// list(state) {
-		// 	if (state.collectionList.length === 0) {
-		// 		return [];
-		// 	}
-		// 	return state.collectionList;
-		// },
-		latest(state) { // TODO: 이름 의미에 맞게 바꾸기.
+		list(state) {
+			if (state.collectionList.length === 0) {
+				return [];
+			}
+			return state.collectionList;
+		},
+		latest(state) {
+			// TODO: 이름 의미에 맞게 바꾸기.
 			if (state.collectionList.length === 0) {
 				return {
 					title: "",
@@ -37,10 +38,10 @@ export default new Vuex.Store({
 					yourtickerList: [],
 				};
 			}
-			if(state.viewIndex === 0){
+			if (state.viewIndex === 0) {
 				// 최신 컬렉션
 				return state.collectionList[0];
-			} else{
+			} else {
 				// 이전 컬렉션들
 				return state.collectionList[state.viewIndex];
 			}
@@ -54,9 +55,9 @@ export default new Vuex.Store({
 		switchName(state, isYou) {
 			state.isYou = isYou;
 		},
-		updateIndex(state, idx){
+		updateIndex(state, idx) {
 			state.viewIndex = idx;
-		}
+		},
 	},
 	actions: {},
 	modules: {},
