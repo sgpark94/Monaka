@@ -2,6 +2,7 @@
 	<div>
 		<collection-component />
 		<Wish />
+		{{ $store.state.viewIndex }}
 	</div>
 </template>
 <script>
