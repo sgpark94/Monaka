@@ -10,7 +10,7 @@
 					</v-col>
 
 					<v-spacer></v-spacer>
-
+					
 					<v-col cols="auto">
 						<v-sheet>
 							<v-switch
@@ -19,7 +19,7 @@
 								color="#8977ad"
 								inset
 								@click="switchName(isYou)"
-								:label="isYou ? 'You' : 'Me'"
+								:label="$store.state.isYou ? 'You' : 'Me'"
 							></v-switch>
 						</v-sheet>
 					</v-col>
@@ -37,7 +37,8 @@ export default {
 	name: "CollectionComponent",
 	data() {
 		return {
-			isYou: true,
+			// isYou: true,
+			isYou: this.$store.state.isYou,
 		};
 	},
 	components: {
