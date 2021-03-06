@@ -1,10 +1,12 @@
 <template>
 	<div>
 		<div class="stickerArea mb-6">
+			<p @click="dialog = true">click</p>
 			<div class="sticker ma-2" v-for="sticker in stickerList">
 				<v-btn icon x-large class="stick">
-					<v-avatar color="#8977ad" size="54" class="caption">
-						{{ sticker.type }}
+					<v-avatar size="54" class="caption">
+						<!-- {{ sticker.src }} -->
+						<img :src="sticker.src" alt="" />
 					</v-avatar>
 				</v-btn>
 			</div>
@@ -14,7 +16,7 @@
 					x-large
 					class="noStick"
 					:disabled="i !== 1"
-					@click="attached(stickerList)"
+					@click="openStickerType()"
 				>
 					<v-avatar color="rgba(137, 119, 173, .1)" size="54" class="caption">
 						<img
@@ -25,6 +27,45 @@
 				</v-btn>
 			</div>
 		</div>
+
+		<div class="text-center">
+			<v-dialog v-model="dialog" width="500">
+				<template v-slot:activator="{ on, attrs }">
+					<v-btn
+						color="red lighten-2"
+						dark
+						v-bind="attrs"
+						v-on="on"
+						v-show="false"
+					>
+						Click Me
+					</v-btn>
+				</template>
+
+				<v-card>
+					<v-card-title class="headline grey lighten-2"
+						>스티커 종류</v-card-title
+					>
+
+					<v-avatar v-for="stickerType in stickerTypeList">
+						<img
+							@click="attached(stickerType)"
+							:src="stickerType.src"
+							:alt="stickerType.alt"
+						/>
+					</v-avatar>
+
+					<v-divider></v-divider>
+
+					<v-card-actions>
+						<v-spacer></v-spacer>
+						<v-btn color="primary" text @click="dialog = false">
+							<v-icon>mdi-close</v-icon>
+						</v-btn>
+					</v-card-actions>
+				</v-card>
+			</v-dialog>
+		</div>
 	</div>
 </template>
 <script>
@@ -32,6 +73,31 @@ import getters from "../store/index";
 
 export default {
 	name: "Sticker",
+	data() {
+		return {
+			dialog: false,
+			stickerTypeList: [
+				{
+					type: "good",
+					text: "참 잘했어요.",
+					alt: "참잘했어요스티커",
+					src: require("@/assets/images/good.png"),
+				},
+				{
+					type: "nice",
+					text: "멋져요.",
+					alt: "멋져요스티커",
+					src: require("@/assets/images/nice.png"),
+				},
+				{
+					type: "kind",
+					text: "착해요.",
+					alt: "착해요스티커",
+					src: require("@/assets/images/kind.png"),
+				},
+			],
+		};
+	},
 	computed: {
 		latestCollection() {
 			return this.$store.getters.latest;
@@ -48,16 +114,18 @@ export default {
 			return this.latestCollection.total - this.stickerList.length;
 		},
 		disabled() {
+			// viewIndex = 0 -> 최신 컬렉션을 의미한다.
 			return this.$store.state.viewIndex > 0; // true, false를 반환한다.
 		},
 	},
 	methods: {
-		attached(list) {
+		openStickerType() {
+			this.dialog = true;
+		},
+		attached(stickerType) {
 			if (this.disabled) return;
-			let form = {
-				type: "good",
-			};
-			list.push(form);
+			this.stickerList.push(stickerType);
+			this.dialog = false;
 		},
 	},
 };
@@ -90,10 +158,10 @@ export default {
 	border: 1px dashed #8977ad;
 	border-radius: 50%;
 }
-.stick {
+/* .stick {
 	border-style: solid;
 	background-color: #8977ad;
-}
+} */
 .noStick img {
 	width: 20px;
 	opacity: 0.2;
