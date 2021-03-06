@@ -88,11 +88,11 @@ export default {
 				this.$refs.collectionName.focus();
 				return;
 			} else if (!this.collectionAddForm.myWish) {
-				this.warningText = "본인의 소원을 입력해주세요.";
+				this.warningText = "본인이 들어줄 소원을 입력해주세요.";
 				this.$refs.myWish.focus();
 				return;
 			} else if (!this.collectionAddForm.yourWish) {
-				this.warningText = "상대방의 소원을 입력해주세요.";
+				this.warningText = "상대가 들어줄 소원을 입력해주세요.";
 				this.$refs.yourWish.focus();
 				return;
 			}
