@@ -1,13 +1,21 @@
 <template>
 	<div>
 		<div class="stickerArea mb-6">
-			<p @click="dialog = true">click</p>
 			<div class="sticker ma-2" v-for="sticker in stickerList">
 				<v-btn icon x-large class="stick">
-					<v-avatar size="54" class="caption">
-						<!-- {{ sticker.src }} -->
-						<img :src="sticker.src" alt="" />
-					</v-avatar>
+					<v-badge
+						:value="isNew(sticker.createdAt)"
+						bordered
+						left
+						content="New"
+						color="red accent-4"
+						offset-x="30"
+						offset-y="10"
+					>
+						<v-avatar size="54" class="caption">
+							<img :src="sticker.src" alt="" />
+						</v-avatar>
+					</v-badge>
 				</v-btn>
 			</div>
 			<div class="sticker ma-2" v-for="i in noStickerCount">
@@ -30,22 +38,10 @@
 
 		<div class="text-center">
 			<v-dialog v-model="dialog" width="500">
-				<template v-slot:activator="{ on, attrs }">
-					<v-btn
-						color="red lighten-2"
-						dark
-						v-bind="attrs"
-						v-on="on"
-						v-show="false"
-					>
-						Click Me
-					</v-btn>
-				</template>
-
 				<v-card>
-					<v-card-title class="headline grey lighten-2"
-						>스티커 종류</v-card-title
-					>
+					<v-card-title class="headline grey lighten-2">
+						스티커 종류
+					</v-card-title>
 
 					<v-avatar v-for="stickerType in stickerTypeList">
 						<img
@@ -54,6 +50,28 @@
 							:alt="stickerType.alt"
 						/>
 					</v-avatar>
+
+					<!-- <v-avatar>
+						<img
+							@click="attached(stickerTypeList[0])"
+							:src="stickerTypeList[0].src"
+							:alt="stickerTypeList[0].alt"
+						/>
+					</v-avatar>
+					<v-avatar>
+						<img
+							@click="attached(stickerTypeList[1])"
+							:src="stickerTypeList[1].src"
+							:alt="stickerTypeList[1].alt"
+						/>
+					</v-avatar>
+					<v-avatar>
+						<img
+							@click="attached(stickerTypeList[2])"
+							:src="stickerTypeList[2].src"
+							:alt="stickerTypeList[2].alt"
+						/>
+					</v-avatar> -->
 
 					<v-divider></v-divider>
 
@@ -82,18 +100,21 @@ export default {
 					text: "참 잘했어요.",
 					alt: "참잘했어요스티커",
 					src: require("@/assets/images/good.png"),
+					createdAt: null,
 				},
 				{
 					type: "nice",
 					text: "멋져요.",
 					alt: "멋져요스티커",
 					src: require("@/assets/images/nice.png"),
+					createdAt: null,
 				},
 				{
 					type: "kind",
 					text: "착해요.",
 					alt: "착해요스티커",
 					src: require("@/assets/images/kind.png"),
+					createdAt: null,
 				},
 			],
 		};
@@ -119,12 +140,16 @@ export default {
 		},
 	},
 	methods: {
+		isNew(time) {
+			return Date.now() - time < 1 * 60 * 60 * 24;
+		},
 		openStickerType() {
 			this.dialog = true;
 		},
-		attached(stickerType) {
+		attached(form) {
 			if (this.disabled) return;
-			this.stickerList.push(stickerType);
+			form.createdAt = Date.now();
+			this.stickerList.push(form);
 			this.dialog = false;
 		},
 	},
