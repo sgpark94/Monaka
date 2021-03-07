@@ -5,6 +5,7 @@
 				<v-icon>mdi-plus</v-icon>
 			</v-btn>
 		</div>
+
 		<v-card
 			v-for="(data, i) in collectionList"
 			:key="i"
@@ -12,6 +13,10 @@
 			class="collectionBox ma-5 pa-2"
 			color="rgba(137, 119, 173, 0.3)"
 		>
+			<v-card-text class="pb-0">
+				<span v-if="isCompleted">Completed</span>
+				<span v-else>In progress</span>
+			</v-card-text>
 			<v-card-subtitle class="pt-3 pb-1">{{ data.title }}</v-card-subtitle>
 			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
 			<v-card-text>
@@ -38,6 +43,12 @@ export default {
 		collectionList() {
 			return this.$store.state.collectionList;
 		},
+		isCompleted() {
+			return (
+				this.$store.getters.latest.yourStickerList.length ==
+				this.$store.getters.latest.total
+			);
+		},
 	},
 	methods: {
 		moveToCollection(i) {
@@ -47,16 +58,16 @@ export default {
 			this.$store.commit("updateIndex", i);
 		},
 		addAbled() {
+			console.log(this.$store.getters.latest.yourStickerList.length);
+			console.log(this.$store.getters.latest.total);
 			if (!this.$store.getters.list.length) {
 				// 초기값 : 개수 없는 경우.
 				this.$router.push({ name: "CollectionAdd" });
 			} else if (
-				this.$store.getters.latest.yourStickerList.length ===
+				this.$store.getters.latest.yourStickerList.length ==
 				this.$store.getters.latest.total
 			) {
 				// 최신 스티커 완성한 경우.
-				console.log(this.$store.getters.latest.yourStickerList.length);
-				console.log(this.$store.getters.latest.total);
 				this.$router.push({ name: "CollectionAdd" });
 			} else {
 				alert("진행중인 스티커를 완성하신 후 새롭게 만들수 있습니다 :)");
@@ -77,5 +88,12 @@ export default {
 	right: 20px;
 	bottom: 20px;
 	color: #8977ad;
+}
+span {
+	padding: 2px 10px;
+	font-size: 0.725rem;
+	border-radius: 10px;
+	background: #8977ad;
+	color: #fff;
 }
 </style>
