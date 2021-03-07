@@ -12,4 +12,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+}
+</style>
