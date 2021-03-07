@@ -119,6 +119,7 @@ export default {
 			],
 		};
 	},
+
 	computed: {
 		latestCollection() {
 			return this.$store.getters.latest;
@@ -141,15 +142,18 @@ export default {
 	},
 	methods: {
 		isNew(time) {
-			return Date.now() - time < 1 * 60 * 60 * 24;
+			return (Date.now() - time) / 1000 < 1 * 60 * 60 * 24;
 		},
 		openStickerType() {
 			this.dialog = true;
 		},
-		attached(form) {
+		attached(clikedSticker) {
 			if (this.disabled) return;
-			form.createdAt = Date.now();
-			this.stickerList.push(form);
+			clikedSticker.createdAt = Date.now();
+
+			this.$store.commit("attach", clikedSticker);
+			// this.stickerList.push(clikedSticker);
+
 			this.dialog = false;
 		},
 	},

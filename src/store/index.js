@@ -1,20 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+	plugins: [createPersistedState()],
 	state: {
 		collectionList: [
 			// 더미 데이터 추가.
-			{
-				title: "1일 1칭찬 도전기~!",
-				myWish: "철수랑 손잡고 놀이공원 놀러가기.",
-				yourWish: "영희랑 커플 프로필 사진찍기.",
-				total: 30,
-				myStickerList: [],
-				yourStickerList: [],
-			},
+			// {
+			// 	title: "1일 1칭찬 도전기~!",
+			// 	myWish: "철수랑 손잡고 놀이공원 놀러가기.",
+			// 	yourWish: "영희랑 커플 프로필 사진찍기.",
+			// 	total: 30,
+			// 	myStickerList: [],
+			// 	yourStickerList: [],
+			// },
 		],
 		isYou: true,
 		viewIndex: 0,
@@ -35,7 +37,7 @@ export default new Vuex.Store({
 					yourWish: "",
 					total: 30,
 					myStickerList: [],
-					yourtickerList: [],
+					yourStickerList: [],
 				};
 			}
 			if (state.viewIndex === 0) {
@@ -57,6 +59,15 @@ export default new Vuex.Store({
 		},
 		updateIndex(state, idx) {
 			state.viewIndex = idx;
+		},
+		attach(state, clikedSticker) {
+			if (state.isYou) {
+				state.collectionList[state.viewIndex].yourStickerList.push(
+					clikedSticker
+				);
+			} else {
+				state.collectionList[state.viewIndex].myStickerList.push(clikedSticker);
+			}
 		},
 	},
 	actions: {},
