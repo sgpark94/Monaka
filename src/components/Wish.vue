@@ -39,6 +39,6 @@ p {
 	color: #828282;
 }
 .wishName {
-	margin-bottom: 60px;
+	margin-bottom: 70px;
 }
 </style>
