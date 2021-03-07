@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<div class="stickerArea mb-6">
-			<div class="sticker ma-2" v-for="sticker in stickerList">
+			<div
+				class="sticker ma-2"
+				v-for="sticker in stickerList"
+				:key="sticker.createdAt"
+			>
 				<v-btn icon x-large class="stick">
 					<v-badge
 						:value="isNew(sticker.createdAt)"
@@ -18,7 +22,7 @@
 					</v-badge>
 				</v-btn>
 			</div>
-			<div class="sticker ma-2" v-for="i in noStickerCount">
+			<div class="sticker ma-2" v-for="i in noStickerCount" :key="i">
 				<v-btn
 					icon
 					x-large
@@ -43,7 +47,10 @@
 						스티커 종류
 					</v-card-title>
 
-					<v-avatar v-for="stickerType in stickerTypeList">
+					<v-avatar
+						v-for="stickerType in stickerTypeList"
+						:key="stickerType.type"
+					>
 						<img
 							@click="attached(stickerType)"
 							:src="stickerType.src"

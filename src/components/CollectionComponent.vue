@@ -10,7 +10,7 @@
 					</v-col>
 
 					<v-spacer></v-spacer>
-					
+
 					<v-col cols="auto">
 						<v-sheet>
 							<v-switch
@@ -19,7 +19,7 @@
 								color="#8977ad"
 								inset
 								@click="switchName(isYou)"
-								:label="$store.state.isYou ? 'You' : 'Me'"
+								:label="$store.state.isYou ? '🐪 멋진낙타' : '🔥 예쁜슬기'"
 							></v-switch>
 						</v-sheet>
 					</v-col>
@@ -61,6 +61,17 @@ export default {
 			// this.$store.state.isYou = isYou;
 			this.$store.commit("switchName", this.isYou);
 		},
+		noCollectionCheck() {
+			let noCollection = !this.$store.state.collectionList.length;
+			if (noCollection) {
+				this.$router.push({
+					name: "CollectionAdd",
+				});
+			}
+		},
+	},
+	created() {
+		this.noCollectionCheck();
 	},
 };
 </script>
