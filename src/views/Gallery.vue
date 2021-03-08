@@ -7,21 +7,25 @@
 		</div>
 
 		<v-card
-			v-for="(data, i) in collectionList"
+			v-for="(collection, i) in collectionList"
 			:key="i"
 			@click="moveToCollection(i)"
 			class="collectionBox ma-5 pa-2"
 			color="rgba(137, 119, 173, 0.3)"
 		>
 			<v-card-text class="pb-0">
-				<span v-if="isCompleted">Completed</span>
+				<span v-if="collection.yourStickerList.length == collection.total"
+					>Completed</span
+				>
 				<span v-else>In progress</span>
 			</v-card-text>
-			<v-card-subtitle class="pt-3 pb-1">{{ data.title }}</v-card-subtitle>
-			<v-card-title class="pt-0">{{ data.yourWish }}</v-card-title>
+			<v-card-subtitle class="pt-3 pb-1">{{
+				collection.title
+			}}</v-card-subtitle>
+			<v-card-title class="pt-0">{{ collection.yourWish }}</v-card-title>
 			<v-card-text>
 				<v-row class="stickerCount mx-0 pb-2">
-					{{ data.yourStickerList.length }} / {{ data.total }}
+					{{ collection.yourStickerList.length }} / {{ collection.total }}
 				</v-row>
 			</v-card-text>
 		</v-card>
@@ -43,12 +47,19 @@ export default {
 		collectionList() {
 			return this.$store.state.collectionList;
 		},
-		isCompleted() {
-			return (
-				this.$store.getters.latest.yourStickerList.length ==
-				this.$store.getters.latest.total
-			);
-		},
+
+		// isCompleted() {
+		// 	console.log(this.$store.state.viewIndex);
+		// 	console.log(
+		// 		this.$store.getters.latest.yourStickerList.length,
+		// 		this.$store.getters.latest.total
+		// 	);
+
+		// 	return (
+		// 		this.$store.getters.latest.yourStickerList.length ==
+		// 		this.$store.getters.latest.total
+		// 	);
+		// },
 	},
 	methods: {
 		moveToCollection(i) {
@@ -74,6 +85,11 @@ export default {
 				return;
 			}
 		},
+
+		// 함수로 표현한 경우
+		// isCompleted(collection) {
+		// 	return collection.yourStickerList.length == collection.total
+		// },
 	},
 };
 </script>
