@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Monaka/precache-manifest.92fcabd3e2665cb3f9f015448c2fa35d.js"
+  "/Monaka/precache-manifest.a643b651a8dd36a0f05a3c04d535bb59.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "monaka"});
