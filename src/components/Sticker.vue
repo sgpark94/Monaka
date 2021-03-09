@@ -1,46 +1,45 @@
 <template>
     <div>
         <div class="stickerArea mb-6">
-            <div
-                class="sticker ma-2"
-                v-for="sticker in stickerList"
-                :key="sticker.createdAt"
-            >
+            <template v-for="sticker in stickerList">
                 <v-badge
+                    :value="isNew(sticker.createdAt)"
+                    class="stickerBtn"
                     bordered
                     left
                     :icon="badgeType(sticker.type)"
                     color="deep-orange"
                     overlap
+                    offset-x="20"
+                    offset-y="20"
                 >
-                    <v-btn icon x-large class="stick">
-                        <!-- :value="isNew(sticker.createdAt)" -->
-                        <v-avatar size="54" class="caption">
-                            <img :src="sticker.src" alt="" />
-                        </v-avatar>
-                    </v-btn>
+                    <v-btn
+                        fab
+                        large
+                        :color="sticker.color"
+                        class="ma-1"
+                        elevation="0"
+                        >{{ sticker.type }}</v-btn
+                    >
                 </v-badge>
-            </div>
-            <div class="sticker ma-2" v-for="i in noStickerCount" :key="i">
+            </template>
+            <template class="sticker ma-2" v-for="i in noStickerCount">
                 <v-btn
-                    icon
-                    x-large
-                    class="noStick"
+                    fab
+                    large
+                    class="ma-1"
+                    elevation="0"
                     :disabled="i !== 1"
                     @click="openStickerType()"
                 >
-                    <v-avatar
-                        color="rgba(137, 119, 173, .1)"
-                        size="54"
-                        class="caption"
-                    >
-                        <img
-                            src="../assets/images/iconHeartSticker.svg"
-                            alt="칭찬스티커받기전아이콘"
-                        />
-                    </v-avatar>
+                    <img
+                        width="26"
+                        style="opacity: .4;"
+                        src="../assets/images/iconHeartSticker.svg"
+                        alt="칭찬스티커받기전아이콘"
+                    />
                 </v-btn>
-            </div>
+            </template>
         </div>
 
         <div class="text-center">
@@ -111,6 +110,7 @@ export default {
                     alt: "참잘했어요스티커",
                     badge: "mdi-thumb-up-outline",
                     src: require("@/assets/images/good.png"),
+                    color: "#8977ad",
                     createdAt: null,
                 },
                 {
@@ -119,6 +119,7 @@ export default {
                     alt: "멋져요스티커",
                     badge: "mdi-hand-peace",
                     src: require("@/assets/images/nice.png"),
+                    color: "#ffb6c1",
                     createdAt: null,
                 },
                 {
@@ -127,6 +128,7 @@ export default {
                     alt: "착해요스티커",
                     badge: "mdi-emoticon-excited-outline",
                     src: require("@/assets/images/kind.png"),
+                    color: "#fbd872",
                     createdAt: null,
                 },
             ],
@@ -213,10 +215,12 @@ export default {
     left: -3px;
     right: 0;
     bottom: 0;
-    width: 58px;
-    height: 58px;
+    width: 62px;
+    height: 62px;
     border: 1px dashed #8977ad;
     border-radius: 50%;
+}
+.stickerBtn {
 }
 /* .stick {
     border-style: solid;
