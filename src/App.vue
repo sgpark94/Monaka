@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <AppBar />
       <v-slide-x-transition hide-on-leave>
         <router-view />
       </v-slide-x-transition>
@@ -11,11 +12,13 @@
 
 <script>
 import Footer from "./components/Footer";
+import AppBar from "./components/AppBar";
 export default {
   name: "App",
 
   components: {
     Footer,
+    AppBar,
   },
 
   data: () => ({
