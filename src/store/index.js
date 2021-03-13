@@ -7,20 +7,37 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    collectionList: [
-      // 더미 데이터 추가.
-      // {
-      //    title: "1일 1칭찬 도전기~!",
-      //    myWish: "철수랑 손잡고 놀이공원 놀러가기.",
-      //    yourWish: "영희랑 커플 프로필 사진찍기.",
-      //    total: 30,
-      //    myStickerList: [],
-      //    yourStickerList: [],
-      // },
-    ],
+    menuTitle: "스티커",
+
+    // Collection
+    collectionList: [],
     isYou: true,
     viewIndex: 0,
-    menuTitle: "스티커",
+
+    // Sticker
+    stickerTypeList: [
+      {
+        type: "Good",
+        text: "참 잘했어요.",
+        icon: "mdi-thumb-up-outline",
+        color: "#8977ad",
+        class: "white--text",
+      },
+      {
+        type: "Nice",
+        text: "멋져요.",
+        icon: "mdi-hand-peace",
+        color: "#ffb6c1",
+        class: "white--text",
+      },
+      {
+        type: "Kind",
+        text: "착해요.",
+        icon: "mdi-emoticon-excited-outline",
+        color: "#fbd872",
+        class: "white--text",
+      },
+    ],
   },
   getters: {
     title(state) {
@@ -75,6 +92,9 @@ export default new Vuex.Store({
       } else {
         state.collectionList[state.viewIndex].myStickerList.push(clikedSticker);
       }
+    },
+    addStickerType(state, form) {
+      state.stickerTypeList.push(form);
     },
   },
   actions: {},

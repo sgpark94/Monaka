@@ -7,7 +7,7 @@
           class="stickerBtn"
           bordered
           left
-          :icon="badgeType(sticker.type)"
+          :icon="sticker.icon"
           color="deep-orange"
           overlap
           offset-x="20"
@@ -19,7 +19,7 @@
             :color="sticker.color"
             class="ma-1"
             elevation="0"
-            :class="sticker.class"
+            :class="'text-none font-weight-bold ' + sticker.class"
             >{{ sticker.type }}</v-btn
           >
         </v-badge>
@@ -45,14 +45,14 @@
 
     <div class="text-center">
       <v-dialog v-model="dialog">
-        <v-card style="overflow:auto;">
+        <v-card>
           <template v-for="sticker in stickerTypeList">
             <v-badge
               :value="true"
               class="stickerBtn"
               bordered
               left
-              :icon="badgeType(sticker.type)"
+              :icon="sticker.icon"
               color="deep-orange"
               overlap
               offset-x="20"
@@ -64,7 +64,7 @@
                 class="ma-1"
                 elevation="0"
                 style="width: 100px; height: 100px;"
-                :class="sticker.class"
+                :class="'text-none font-weight-bold ' + sticker.class"
                 @click="attached(sticker)"
                 >{{ sticker.type }}</v-btn
               >
@@ -83,38 +83,7 @@ export default {
   data() {
     return {
       dialog: false,
-      stickerTypeList: [
-        {
-          type: "good",
-          text: "참 잘했어요.",
-          alt: "참잘했어요스티커",
-          badge: "mdi-thumb-up-outline",
-          // src: require("@/assets/images/good.png"),
-          color: "#8977ad",
-          createdAt: null,
-          class: "font-weight-bold white--text",
-        },
-        {
-          type: "nice",
-          text: "멋져요.",
-          alt: "멋져요스티커",
-          badge: "mdi-hand-peace",
-          // src: require("@/assets/images/nice.png"),
-          color: "#ffb6c1",
-          createdAt: null,
-          class: "font-weight-bold white--text",
-        },
-        {
-          type: "kind",
-          text: "착해요.",
-          alt: "착해요스티커",
-          badge: "mdi-emoticon-excited-outline",
-          // src: require("@/assets/images/kind.png"),
-          color: "#fbd872",
-          createdAt: null,
-          class: "font-weight-bold white--text",
-        },
-      ],
+
       // mdi-face-man-shimmer
       // mdi-face-woman-shimmer
     };
@@ -130,6 +99,9 @@ export default {
       } else {
         return this.$store.getters.latest.myStickerList;
       }
+    },
+    stickerTypeList() {
+      return this.$store.state.stickerTypeList;
     },
     noStickerCount() {
       // computed처럼 값을 변화시켜주니까 이해하자!!
@@ -158,17 +130,6 @@ export default {
     },
 
     // Utils
-    badgeType(type) {
-      let badge = "mdi-close";
-
-      this.stickerTypeList.forEach((item) => {
-        if (item.type == type) {
-          badge = item.badge;
-        }
-      });
-
-      return badge;
-    },
     isNew(time) {
       return (Date.now() - time) / 1000 < 1 * 60 * 60 * 24;
     },

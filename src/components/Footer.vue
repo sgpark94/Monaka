@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="value" color="#8977ad" fixed grow>
+  <v-bottom-navigation app v-model="value" color="#8977ad" fixed grow>
     <v-btn
       value="Collection"
       name="Collection"

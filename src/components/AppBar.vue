@@ -1,7 +1,15 @@
 <template>
   <div>
     <v-app-bar app color="white" flat>
-      <v-toolbar-title>{{ MenuTitle }}</v-toolbar-title>
+      <v-icon large v-if="backIconShow" @click="goBack()">
+        mdi-chevron-left</v-icon
+      >
+      <v-icon v-else class="mr-2" color="purple accent-4">{{
+        MenuIcon
+      }}</v-icon>
+      <v-toolbar-title class="font-weight-bold purple--text text--accent-4">{{
+        MenuTitle
+      }}</v-toolbar-title>
 
       <v-spacer></v-spacer>
       <v-menu offset-y>
@@ -37,17 +45,39 @@ export default {
   components: {},
 
   data: () => ({
-    items: [{ path: "/stickerSetting", text: "스티커 종류 설정" }],
+    items: [{ path: "/stickerCustom", text: "스티커 종류 설정" }],
     //
   }),
   computed: {
     MenuTitle() {
       return this.$store.getters.title;
     },
+    MenuIcon() {
+      let icon = {
+        Collection: "mdi-sticker-emoji",
+        CollectionAdd: "mdi-sticker-emoji",
+        Gallery: "mdi-folder-multiple-image",
+      }[this.MenuTitle];
+      console.log(this.MenuTitle, icon);
+      return icon;
+    },
+    backIconShow() {
+      let backList = ["StickerCustom"];
+      return backList.includes(this.MenuTitle);
+    },
   },
   methods: {
     moveTo(path) {
       this.$router.push({ path: path });
+    },
+    goBack() {
+      if (["StickerCustom"].includes(this.MenuTitle)) {
+        // to Collection
+        this.$router.push({ name: "Collection" });
+      } else {
+        // Gallery
+        this.$router.push({ name: "Gallery" });
+      }
     },
   },
 };

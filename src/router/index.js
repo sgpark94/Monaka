@@ -24,14 +24,14 @@ const routes = [
         /* webpackChunkName: "CollectionAdd" */ "../components/CollectionAdd.vue"
       ),
   },
-  // {
-  //   path: "/stickerSetting",
-  //   name: "StickerSetting",
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "CollectionAdd" */ "../views/StickerSetting.vue"
-  //     ),
-  // },
+  {
+    path: "/stickerCustom",
+    name: "StickerCustom",
+    component: () =>
+      import(
+        /* webpackChunkName: "StickerCustom" */ "../views/StickerCustom.vue"
+      ),
+  },
 ];
 
 const router = new VueRouter({
