@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Monaka/css/StickerCustom.7653fb9f.css"
   },
   {
-    "revision": "a46850bcbbbf5eafba19",
+    "revision": "4982dc8c710a19342741",
     "url": "/Monaka/css/app.38989d95.css"
   },
   {
@@ -44,7 +44,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Monaka/img/iconHeartSticker.f46a1642.svg"
   },
   {
-    "revision": "aafb6ccb02b935a0c124d6932d3a8a1b",
+    "revision": "d7f1d720ff0262e066f646607805a6dd",
     "url": "/Monaka/index.html"
   },
   {
@@ -76,8 +76,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Monaka/js/StickerCustom.7256d79e.js"
   },
   {
-    "revision": "a46850bcbbbf5eafba19",
-    "url": "/Monaka/js/app.5b9f422a.js"
+    "revision": "4982dc8c710a19342741",
+    "url": "/Monaka/js/app.292f6edf.js"
   },
   {
     "revision": "d9a402dcd9a99e11e501",
