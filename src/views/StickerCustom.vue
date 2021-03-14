@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<h3>등록된 스티커</h3>
+		<div class="customTitle mb-2">등록된 스티커</div>
 		<v-card flat>
 			<template v-for="sticker in stickerTypeList">
 				<v-badge
@@ -25,7 +25,7 @@
 			</template>
 		</v-card>
 
-		<h3 class="mt-5">스티커 추가</h3>
+		<div class="customTitle mt-5 mb-2">스티커 추가</div>
 		<v-form>
 			<v-badge
 				:value="true"
@@ -191,3 +191,10 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+.customTitle {
+	color: #555;
+	font-weight: 400;
+}
+</style>
