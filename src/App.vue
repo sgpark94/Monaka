@@ -1,45 +1,43 @@
 <template>
-  <v-app>
-    <v-main>
-      <AppBar />
-      <v-slide-x-transition hide-on-leave>
-        <router-view />
-      </v-slide-x-transition>
-    </v-main>
-    <Footer />
-  </v-app>
+	<v-app>
+		<v-main>
+			<AppBar />
+			<v-slide-x-transition hide-on-leave>
+				<router-view />
+			</v-slide-x-transition>
+		</v-main>
+		<Footer />
+	</v-app>
 </template>
 
 <script>
 import Footer from "./components/Footer";
 import AppBar from "./components/AppBar";
 export default {
-  name: "App",
+	name: "App",
 
-  components: {
-    Footer,
-    AppBar,
-  },
+	components: {
+		Footer,
+		AppBar,
+	},
 
-  data: () => ({
-    //
-  }),
+	data: () => ({
+		//
+	}),
 };
 </script>
 
 <style>
-/* @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;700&display=swap"); */
-
 @font-face {
-  font-family: "JSDongkang-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSDongkang-RegularA1.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: "GyeonggiBatang";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
-  font-family: "JSDongkang-Regular", sans-serif;
-  letter-spacing: -0.5px;
+	font-family: "GyeonggiBatang", sans-serif;
+	letter-spacing: -0.5px;
 }
 </style>
