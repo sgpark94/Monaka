@@ -44,10 +44,10 @@
 		</div>
 
 		<div class="text-center">
-			<v-dialog v-model="dialog" class="pa-2">
+			<v-dialog v-model="dialog" class="pa-2" hide-overlay>
 				<v-card
 					style="white-space: nowrap; background-color: transparent;"
-					outlined
+					flat
 				>
 					<template v-for="sticker in stickerTypeList" outlined>
 						<v-badge
